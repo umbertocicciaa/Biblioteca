@@ -1,4 +1,5 @@
  using Biblioteca.Components;
+using Biblioteca.Services.Book;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,8 @@ builder.Services.AddSwaggerGen(c =>
 {
      c.SwaggerDoc("v1",new OpenApiInfo { Title = "Library API",Version = "v1"});
 }); 
+
+builder.Services.AddTransient<IBookService,BookService>();
 
 var app = builder.Build();
 
