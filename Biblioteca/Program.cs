@@ -3,6 +3,9 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//controllers
+builder.Services.AddControllers();
+
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
@@ -15,18 +18,22 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
+app.MapControllers();
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {   
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseSwagger();
-    app.UseSwaggerUI(c => 
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json ", "Library API V1");
-    } );
     app.UseHsts();
 }
+
+//swagger conf
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Library API V1");
+});
 
 app.UseHttpsRedirection();
 
