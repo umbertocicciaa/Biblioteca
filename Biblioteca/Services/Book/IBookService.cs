@@ -2,7 +2,7 @@
 
 namespace Biblioteca.Services.Book
 {
-    public interface IBookService
+    public interface IBookService 
     {
         BookDTO CreateBook(CreateBookRequest request);
         BookDTO ReadBook(string bookId);

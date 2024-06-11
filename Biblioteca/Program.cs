@@ -1,8 +1,13 @@
  using Biblioteca.Components;
+using Biblioteca.Models;
+using Biblioteca.Services;
 using Biblioteca.Services.Book;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors();
 
 //controllers
 builder.Services.AddControllers();
@@ -17,7 +22,13 @@ builder.Services.AddSwaggerGen(c =>
      c.SwaggerDoc("v1",new OpenApiInfo { Title = "Library API",Version = "v1"});
 }); 
 
+builder.Services.AddDbContext<LibraryDbContext>(
+    options => options.UseSqlServer("Server=localhost;Database=library;Trusted_Connection=True;TrustServerCertificate=True;")
+);
+
+builder.Services.AddTransient<IBookMapper, BookMapper>();
 builder.Services.AddTransient<IBookService,BookService>();
+
 
 var app = builder.Build();
 

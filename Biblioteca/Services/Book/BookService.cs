@@ -1,18 +1,41 @@
-﻿using Biblioteca.Models.DTO.Books;
-
-namespace Biblioteca.Services.Book
+﻿
+using Biblioteca.Services.Book;
+using Biblioteca.Models.DTO.Books;
+using Biblioteca.Models;
+namespace Biblioteca.Services   
 {
     public class BookService : IBookService
     {
+   
+        private readonly IBookMapper _mapper;
+
+        public BookService(IBookMapper mapper) 
+        { 
+            _mapper = mapper;
+        }
+
         public BookDTO CreateBook(CreateBookRequest request)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var contex = new LibraryDbContext())
+                {
+                    var bookToAdd = _mapper.ToBookEntity(request);
+                    contex.Add(bookToAdd);
+                    contex.SaveChanges();
+                    return _mapper.ToBookDTO(bookToAdd);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exceptions.Books.CantAddBookException();
+            }
         }
         public BookDTO ReadBook(string bookId)
         {
             throw new NotImplementedException();
         }
-        public BookDTO UpdateBook(string id, UpdateBookRequest request)
+        public BookDTO UpdateBook(string id,UpdateBookRequest request)
         {
             throw new NotImplementedException();
         }
