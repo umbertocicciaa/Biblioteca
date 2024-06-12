@@ -1,4 +1,4 @@
-﻿using Biblioteca.Models.DTO.Books;
+﻿using Biblioteca.DTO.Books;
 
 namespace Biblioteca.Services.Book
 {

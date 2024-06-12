@@ -1,8 +1,8 @@
 ﻿
 using Biblioteca.Services.Book;
-using Biblioteca.Models.DTO.Books;
 using Biblioteca.Models;
-namespace Biblioteca.Services   
+using Biblioteca.DTO.Books;
+namespace Biblioteca.Services
 {
     public class BookService : IBookService
     {

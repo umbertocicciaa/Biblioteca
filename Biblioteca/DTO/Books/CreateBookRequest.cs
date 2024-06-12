@@ -1,8 +1,7 @@
-﻿namespace Biblioteca.Models.DTO.Books
+﻿namespace Biblioteca.DTO.Books
 {
-    public class BookDTO
+    public class CreateBookRequest
     {
-        public int Id { get; set; }
         public string? Title { get; set; }
         public int? CategoryId { get; set; }
         public DateOnly? PublicationDate { get; set; }
