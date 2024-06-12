@@ -1,4 +1,4 @@
-﻿namespace Biblioteca.Models.DTO.Authors
+﻿namespace Biblioteca.DTO.Authors
 {
     public class DeleteAuthorResponse
     {

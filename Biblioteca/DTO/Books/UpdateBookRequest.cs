@@ -1,4 +1,4 @@
-﻿namespace Biblioteca.Models.DTO.Books
+﻿namespace Biblioteca.DTO.Books
 {
     public class UpdateBookRequest
     {

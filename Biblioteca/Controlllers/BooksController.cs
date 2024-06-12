@@ -1,5 +1,5 @@
 ﻿using Azure.Core;
-using Biblioteca.Models.DTO.Books;
+using Biblioteca.DTO.Books;
 using Biblioteca.Services.Book;
 using Microsoft.AspNetCore.Mvc;
 

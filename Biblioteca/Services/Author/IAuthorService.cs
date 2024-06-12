@@ -1,4 +1,4 @@
-﻿using Biblioteca.Models.DTO.Authors;
+﻿using Biblioteca.DTO.Authors;
 
 namespace Biblioteca.Services.Author
 {

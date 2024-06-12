@@ -1,4 +1,4 @@
-﻿using Biblioteca.Models.DTO.Authors;
+﻿using Biblioteca.DTO.Authors;
 using Biblioteca.Services.Author;
 using Microsoft.AspNetCore.Mvc;
 
@@ -44,8 +44,8 @@ namespace Biblioteca.Controlllers
         public IActionResult DeleteAuthor(String id)
         {
             var deleted = _authorService.DeleteAuthor(id);
-            if (deleted.Success)
-                return Ok(deleted);
+            //if (deleted.Success)
+            //  return Ok(deleted);
             return NotFound(deleted);
 
         }
