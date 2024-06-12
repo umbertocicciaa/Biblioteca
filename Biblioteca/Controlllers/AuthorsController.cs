@@ -6,13 +6,9 @@ namespace Biblioteca.Controlllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthorsController : ControllerBase
+    public class AuthorsController(IAuthorService authorService) : ControllerBase
     {
-        private readonly IAuthorService _authorService;
-        public AuthorsController(IAuthorService authorService)
-        {
-            _authorService = authorService;
-        }
+        private readonly IAuthorService _authorService = authorService;
 
         [HttpPost("{id}")]
         public IActionResult CreateAuthor(CreateAuthorRequest request)

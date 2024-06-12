@@ -6,11 +6,9 @@ namespace Biblioteca.Controlllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class Categories : ControllerBase
+    public class Categories(ICategoryService categoryService) : ControllerBase
     {
-        private readonly ICategoryService _categoryService;
-
-        public Categories(ICategoryService categoryService) => _categoryService = categoryService;
+        private readonly ICategoryService _categoryService = categoryService;
 
         [HttpPost]
         public IActionResult CreateCategory(CreateCategoryRequest request)
