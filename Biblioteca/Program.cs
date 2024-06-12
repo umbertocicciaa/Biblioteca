@@ -2,6 +2,7 @@
 using Biblioteca.Models;
 using Biblioteca.Services;
 using Biblioteca.Services.Book;
+using Biblioteca.Services.Category;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -26,9 +27,13 @@ builder.Services.AddDbContext<LibraryDbContext>(
     options => options.UseSqlServer("Server=localhost;Database=library;Trusted_Connection=True;TrustServerCertificate=True;")
 );
 
+//Mappers
 builder.Services.AddTransient<IBookMapper, BookMapper>();
-builder.Services.AddTransient<IBookService,BookService>();
+builder.Services.AddTransient<ICategoryMapper, CategoryMapper>();
 
+//Services
+builder.Services.AddTransient<IBookService,BookService>();
+builder.Services.AddTransient<ICategoryService, CategoryService>();
 
 var app = builder.Build();
 
