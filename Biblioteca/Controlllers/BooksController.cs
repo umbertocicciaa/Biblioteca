@@ -12,10 +12,7 @@ namespace Biblioteca.Controlllers
 
         private readonly IBookService _bookService;
 
-        public BooksController(IBookService bookService)
-        {
-            _bookService = bookService;
-        }
+        public BooksController(IBookService bookService) => _bookService = bookService;
 
         [HttpPost]
         public IActionResult CreateBook(CreateBookRequest request)

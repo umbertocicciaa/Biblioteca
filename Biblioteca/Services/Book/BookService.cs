@@ -18,14 +18,12 @@ namespace Biblioteca.Services
         {
             try
             {
-                using (var contex = new LibraryDbContext())
-                {
-                    var bookToAdd = _mapper.ToBookEntity(request);
-                    bookToAdd.PublicationDate = DateOnly.FromDateTime(DateTime.Now);
-                    contex.Add(bookToAdd);
-                    contex.SaveChanges();
-                    return _mapper.ToBookDTO(bookToAdd);
-                }
+                using var contex = new LibraryDbContext();
+                var bookToAdd = _mapper.ToBookEntity(request);
+                bookToAdd.PublicationDate = DateOnly.FromDateTime(DateTime.Now);
+                contex.Add(bookToAdd);
+                contex.SaveChanges();
+                return _mapper.ToBookDTO(bookToAdd);
             }
             catch (Exception)
             {
