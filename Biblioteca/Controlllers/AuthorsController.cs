@@ -14,7 +14,7 @@ namespace Biblioteca.Controlllers
             _authorService = authorService;
         }
 
-        [HttpPost("{id}")]
+        [HttpPost]
         public IActionResult CreateAuthor(CreateAuthorRequest request)
         {
             var response = _authorService.CreateAuthor(request);

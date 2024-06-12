@@ -7,7 +7,7 @@ namespace Biblioteca.Services.Author
         AuthorDTO CreateAuthor(CreateAuthorRequest request);
         AuthorDTO ReadAuthor(String id);
         AuthorDTO UpdateAuthor(String id, UpdateAuthorRequest request);
-        AuthorDTO DeleteAuthor(String id);
+        DeleteAuthorResponse DeleteAuthor(String id);
 
     }
 }
