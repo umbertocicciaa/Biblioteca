@@ -10,7 +10,7 @@ namespace Biblioteca.Controlllers
     {
         private readonly IAuthorService _authorService = authorService;
 
-        [HttpPost("{id}")]
+        [HttpPost]
         public IActionResult CreateAuthor(CreateAuthorRequest request)
         {
             var response = _authorService.CreateAuthor(request);
