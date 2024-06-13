@@ -5,6 +5,7 @@ using Biblioteca.Services.Book;
 using Biblioteca.Services.Category;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using System.Net.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +35,9 @@ builder.Services.AddTransient<ICategoryMapper, CategoryMapper>();
 //Services
 builder.Services.AddTransient<IBookService,BookService>();
 builder.Services.AddTransient<ICategoryService, CategoryService>();
+
+//Http
+builder.Services.AddHttpClient("Library App",HttpClient => { HttpClient.BaseAddress = new Uri("http://localhost:5273/"); });
 
 var app = builder.Build();
 

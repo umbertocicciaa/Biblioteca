@@ -1,0 +1,40 @@
+﻿@page "/categories"
+@using System.ComponentModel.DataAnnotations
+@using Biblioteca.DTO.Category
+@inject HttpClient Http
+
+<h3>Category</h3>
+
+<EditForm Model="@category" OnValidSubmit="HandleValidSubmit" FormName="CreateCategory">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="form-group">
+        <label for="name">
+            Category Name
+            <InputText id="name" class="form-control" @bind-Value="category.CategoryName" />
+        </label>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+</EditForm>
+@code {
+    [SupplyParameterFromForm]
+    public CreateCategoryRequest category {get;set;}
+
+    protected override void OnInitialized() => category ??= new();
+
+    private async Task HandleValidSubmit()
+    {
+        category.CategoryName=category?.CategoryName?.Trim().ToLower();
+        var response = await Http.PostAsJsonAsync("http://localhost:5273/api/categories", category);
+        if (response.IsSuccessStatusCode)
+        {
+            category = new CreateCategoryRequest();
+        }
+        else
+        {
+            Console.WriteLine("Error adding category");
+        }
+    }
+}
