@@ -4,14 +4,10 @@ using Biblioteca.Repository;
 
 namespace Biblioteca.Services.Author
 {
-    public class AuthorService : IAuthorService
+    public class AuthorService(IAuthorMapper mapper) : IAuthorService
     {
-        public IAuthorMapper _mapper;
+        public IAuthorMapper _mapper = mapper;
 
-        public AuthorService(IAuthorMapper mapper)
-        {
-            _mapper = mapper;
-        }
         public AuthorDTO CreateAuthor(CreateAuthorRequest request)
         {
             try
@@ -28,17 +24,17 @@ namespace Biblioteca.Services.Author
             }
         }
 
-        public DeleteAuthorResponse DeleteAuthor(string id)
-        {
-            throw new NotImplementedException();
-        }
-
         public AuthorDTO ReadAuthor(string id)
         {
             throw new NotImplementedException();
         }
 
         public AuthorDTO UpdateAuthor(string id, UpdateAuthorRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DeleteAuthorResponse DeleteAuthor(string id)
         {
             throw new NotImplementedException();
         }
